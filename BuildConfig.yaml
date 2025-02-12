@@ -21,4 +21,6 @@ spec:
       buildArgs:
         - name: APP_VERSION
           value: tmp
+        - name: TEST
+          value: dkoci
       dockerfilePath: src/main/docker/Dockerfile.jvm
