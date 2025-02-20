@@ -77,7 +77,9 @@
 #   accessed directly. (example: "foo.example.com,bar.example.com")
 #
 ###
-FROM registry.access.redhat.com/ubi8/openjdk-17:1.20
+# FROM registry.access.redhat.com/ubi8/openjdk-17:1.20
+
+FROM registry.redhat.io/ubi8/openjdk-17
 # FROM registry.access.redhat.com/ubi8/openjdk-17-runtime:1.20-3.1724181070
 
 
