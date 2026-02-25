@@ -1,0 +1,43 @@
+name: Manual Release
+
+on:
+  workflow_dispatch: # Allows you to trigger this from the UI
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+      - name: Maven Release Prepare & Perform
+        run: |
+          mvn --batch-mode release:prepare release:perform \
+            -Darguments="-DskipTests" \
+            -Dusername=${{ github.actor }} \
+            -Dpassword=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          # Automatically finds the version Maven just created
+          tag_name: $(git describe --tags --abbrev=0)
+          files: target/*.jar
+          generate_release_notes: true
