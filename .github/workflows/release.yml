@@ -44,8 +44,10 @@ jobs:
         if: success()
         with:
           # This command finds the latest tag created by the Maven plugin
-          tag_name: v${{ steps.project_version.outputs.VERSION }} 
+          # tag_name: v${{ steps.project_version.outputs.VERSION }} 
           # Or more simply, tells the action to use the tag that was just pushed
+          tag_name: v${{ env.CLEAN_VERSION }}
+          name: Release v${{ env.CLEAN_VERSION }}
           use_as_latest: true
           files: target/*.jar
           generate_release_notes: true
