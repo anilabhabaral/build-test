@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.acme</groupId>
     <artifactId>getting-started</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
 
     <properties>
         <compiler-plugin.version>3.13.0</compiler-plugin.version>
@@ -21,7 +21,7 @@
         <connection>scm:git:https://github.com/anilabhabaral/build-test.git</connection>
         <developerConnection>scm:git:https://github.com/anilabhabaral/build-test.git</developerConnection>
         <url>https://github.com/anilabhabaral/build-test</url>
-        <tag>HEAD</tag>
+        <tag>v1.0.2</tag>
     </scm>
 
     <dependencyManagement>
